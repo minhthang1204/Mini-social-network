@@ -52,7 +52,16 @@ router.post('/comments/create', auth, async (req, res) => {
                 
             }   
         } 
-        
+        prenoti.count = prenoti.count + 1
+        await prenoti.save()
+        // console.log(prenoti)
+        res.status(201).send({
+            comment,
+            username:req.user.username,
+            avatarurl: req.user.avatarurl
+        })
+
+
     }else {
         throw new Error()
     }
