@@ -1,6 +1,6 @@
 const mongoose = require ('mongoose')
 
-mongoose.connect('mongodb://localhost:27017/nhom14-social-networking',{
+mongoose.connect('mongodb://localhost:27017/social-networking',{
     useNewUrlParser: true,
     useCreateIndex: true ,
     useUnifiedTopology: true,
