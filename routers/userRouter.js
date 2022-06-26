@@ -232,7 +232,6 @@ router.get('/users/:id',auth,  async (req, res) => {
     }
 })
 
-
 router.post('/edit', auth, async (req, res) => {
     // console.log(req.body)
     const updates = Object.keys(req.body)
@@ -261,8 +260,5 @@ router.post('/editbio', auth, async (req, res) => {
         console.log(e)
     }
 })
-
-
-
 
 module.exports = router

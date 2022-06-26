@@ -107,50 +107,50 @@ router.post('/accept-friend',auth, async (req, res) => {
         console.log(err);
         return;
     }
-})
 
-router.get('/friends', auth, async (req, res) => {
-    const match = {friends : true }
-    try {
-        await req.user.populate({
-            path: 'friends',
-            match: match
-            
-        }).execPopulate();
-        // res.send(req.user.friends)
-
-        var friendArr = await Promise.all(req.user.friends.map(friend => User.findById(friend.receiver)))
-        res.send(friendArr)
-         
-        
-    } catch (e) {
-        res.status(500).send()
-    }
-})
-
-//{{url}}/search?id=....
-router.get('/search', auth, async (req, res) => {
-    // console.log(req.query.username)
-    if (req.query.username) {
-        var username = req.query.username 
-        // console.log(username)
+    router.get('/friends', auth, async (req, res) => {
+        const match = {friends : true }
         try {
-            var userArr = await User.find({username: { '$regex' : username, '$options' : 'i' }})
-            // res.send(userList)
-            // res.render('search',{userArr, user: req.user} )
-            res.render('chat',{userArr, user: req.user} )
+            await req.user.populate({
+                path: 'friends',
+                match: match
+                
+            }).execPopulate();
+            // res.send(req.user.friends)
+    
+            var friendArr = await Promise.all(req.user.friends.map(friend => User.findById(friend.receiver)))
+            res.send(friendArr)
              
-      
+            
         } catch (e) {
             res.status(500).send()
-            console.log(e)
         }
-    }
+    })
     
+    //{{url}}/search?id=....
+    router.get('/search', auth, async (req, res) => {
+        // console.log(req.query.username)
+        if (req.query.username) {
+            var username = req.query.username 
+            // console.log(username)
+            try {
+                var userArr = await User.find({username: { '$regex' : username, '$options' : 'i' }})
+                // res.send(userList)
+                // res.render('search',{userArr, user: req.user} )
+                res.render('chat',{userArr, user: req.user} )
+                 
+          
+            } catch (e) {
+                res.status(500).send()
+                console.log(e)
+            }
+        }
+        
+    })
+    router.post('/livesearch', auth, async (req, res) => {
+        var user = await User.find({})
+    
+        res.status(201).send(user)
+    })
+    module.exports = router
 })
-router.post('/livesearch', auth, async (req, res) => {
-    var user = await User.find({})
-
-    res.status(201).send(user)
-})
-module.exports = router

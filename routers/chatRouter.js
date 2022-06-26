@@ -6,12 +6,12 @@ const chatController = require('../controllers/chat')
 
 const router = express.Router()
 
-router.get('/', auth, chatController.getChats)
+// router.get('/', auth, chatController.getChats)
 
-router.post('/', auth, chatController.postChats)
+// router.post('/', auth, chatController.postChats)
 
-router.get('/', auth, chatController.getChatUser)
+// router.get('/', auth, chatController.getChatUser)
 
-router.post('/:chatId', auth, chatController.postSendMessage)
+//router.post('/:chatId', auth, chatController.postSendMessage)
 
 module.exports = router
