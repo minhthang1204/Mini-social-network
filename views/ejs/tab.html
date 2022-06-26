@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" >
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../style/homepage_style.css">
+    <link rel="stylesheet" href="../style/tab_style.css">
+</head>
+<body>
+    <div class="tool-bar shadowable">
+        <div   class="tool-bar-left" >
+         <!--   <a href="#"><i class="fa fa-facebook circle"></i></a> -->
+            <a href="#" class="circle">search</a> 
+        </div>
+        <div  class="tool-bar-center">
+            
+            <a id="home-label" class="active" href="../newsfeed"><i class="fa fa-home"></i></a> 
+            <a href="#" id="user-label"><i class="fas fa-user-circle"></i>Thu Huong Dao</a>
+            
+            
+            
+            
+        </div>
+        <div  class="tool-bar-right" >
+            
+            <div class="dropdown">
+                <button class="circle dropbtn" onclick="myFunction2()"><i style="width: 24px;height: 24px;" class="fa fa-caret-down"></i></button>
+                <div class="dropdown-content2" id="myDropdown2">
+                
+                  <a class="each-drop-content" href="#home">Thu Huong Dao</a>
+                  <a class="each-drop-content" href="#about">Log out</a>
+                
+                </div>
+            </div>
+            <script>
+                /* When the user clicks on the button, 
+                toggle between hiding and showing the dropdown content */
+                function myFunction2() {
+                  document.getElementById("myDropdown2").classList.toggle("show");
+                }
+                
+                // Close the dropdown if the user clicks outside of it
+                window.onclick = function(e) {
+                  if (!e.target.matches('.dropbtn')) {
+                  var myDropdown = document.getElementById("myDropdown2");
+                    if (myDropdown.classList.contains('show')) {
+                      myDropdown.classList.remove('show');
+                    }
+                  }
+                }
+                </script>
+           
+          <!--  <a href="#" class="circle"><i class="material-icons ">arrow_drop_down_circle</i></a>-->
+          
+            <div class="dropdown">
+                <button class="circle dropbtn" onclick="myFunction()"><i style="width: 24px;height: 24px;" class="fa fa-bell "></i></button>
+                <div class="dropdown-content" id="myDropdown">
+                
+                  <a class="each-drop-content" href="#home">Home</a>
+                  <a class="each-drop-content" href="#about">About</a>
+                  <a class="each-drop-content" href="#contact">Contact</a>
+                </div>
+            </div>
+
+            <script>
+                /* When the user clicks on the button, 
+                toggle between hiding and showing the dropdown content */
+                function myFunction() {
+                  document.getElementById("myDropdown").classList.toggle("show");
+                }
+                
+                // Close the dropdown if the user clicks outside of it
+                window.onclick = function(e) {
+                  if (!e.target.matches('.dropbtn')) {
+                  var myDropdown = document.getElementById("myDropdown");
+                    if (myDropdown.classList.contains('show')) {
+                      myDropdown.classList.remove('show');
+                    }
+                  }
+                }
+                </script>
+           <!-- <a href="#"class="circle"><i class="fa fa-bell "></i></a> -->
+            
+            
+           
+           <!-- <a href="#" class="circle"><i class="fa fa-envelope "></i></a> -->
+          <!-- <a href="#" style="border-radius: 50%;"><img src="../image/add-friend.png" style="width:24px;height:24px;"></a>-->
+           <div class="dropdown">
+            <button class="circle dropbtn" onclick="myFunction1()"><img src="../image/add-friend.png" style="width:24px;height:24px;"></i></button>
+            <div class="dropdown-content1" id="myDropdown1">
+            
+             <div> 
+                 <a class="each-drop-content" href="#home">hello â,a, kkkkk kkkkk kkkkkk kkkk kk kkkk kkkkk kkk kkkk kkk kkkkk kkkk kkkkkk </a>
+                 <form class="friend-request-form">
+                     <input class="btn-friend-res"  type="submit" name="submit" value="Accept"> 
+                 </form>
+            </div>
+            <div> 
+                <a class="each-drop-content" href="#home">bye </a>
+                <form class="friend-request-form">
+                    <input class="btn-friend-res" type="submit" name="submit" value="Accept"> 
+                </form>
+           </div>
+            </div>
+        </div>
+        <script>
+            /* When the user clicks on the button, 
+            toggle between hiding and showing the dropdown content */
+            function myFunction1() {
+              document.getElementById("myDropdown1").classList.toggle("show");
+            }
+            
+            // Close the dropdown if the user clicks outside of it
+            window.onclick = function(e) {
+              if (!e.target.matches('.dropbtn')) {
+              var myDropdown = document.getElementById("myDropdown1");
+                if (myDropdown.classList.contains('show')) {
+                  myDropdown.classList.remove('show');
+                }
+              }
+            }
+            </script>
+       <!--    <a href="#" class="circle"><i class="fa fa-envelope "></i></a>-->
+           <!--<a href="#" style="">
+            <img src="../image/avt.jpg" style="width: 24px;height: 24px;">
+            <label>name</label>
+
+        </a>-->
+        
+           
+           
+           
+            
+
+            
+            
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Registration Form</title>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="style/style.css">
+    <script src="script/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $("select").change(function () {
+                if ($(this).val() == "") $(this).css({ color: "gray" });
+                else $(this).css({ color: "black" });
+            });
+        });
+    </script>
+    <var     
+</head>
+<body onclick="warning()">
+    <div class="container" id="container">
+        <div class="title">Registration</div>
+        <form id ="reg-form" method="POST" action="/users/register">
+            <div class="user-details">
+                <div class="input-box" id="username-field">
+                    <div class="details">Username</div>
+                    <div class="wrapper">
+                        <input type="text"  id="username" name="username" onkeyup="warning()" onclick="c1()" placeholder="Create a username" required>
+                    </div>
+                    <div class="warning-box" id="username-warning"></div>
+                </div>
+                <div class="input-box" id="dob-field">
+                    <div class="details">Date of Birth</div>
+                    <div class="input-grp wrapper" id="dob-grp">
+                        <div style="width: 30.5%">
+                            <!--110px-->
+                            <select name="month" id="month" onclick="c_dob()">
+                                <option disabled selected hidden value>Month</option>
+                                <option value="01">January</option>
+                                <option value="02">February</option>
+                                <option value="03">March</option>
+                                <option value="04">April</option>
+                                <option value="05">May</option>
+                                <option value="06">June</option>
+                                <option value="07">July</option>
+                                <option value="08">August</option>
+                                <option value="09">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                        </div>
+                        <div style="width: 23.6%">
+                            <!--85px-->
+                            <input id="day" name="day" type="text"onkeyup="warning()" onClick="c_dob()" placeholder="Day" required>
+                        </div>
+                        <div style="width: 29.2%">
+                            <!--105px-->
+                            <input id="year" name="year" type="text" onkeyup="warning()" onClick="c_dob()" placeholder="Year" required>
+                        </div>
+                    </div>
+                    <div class="warning-box" id="month-warning">
+                        
+                    </div>
+                </div>
+                <div class="input-box">
+                    <div class="details">Gender</div>
+                    <label class="radio-group">
+                        <input class="radio-input" type="radio" id="male" name="gender" value="male">
+                        <span>Male</span>
+                    </label>
+                    <label class="radio-group">
+                        <input class="radio-input" type="radio" id="female" name="gender" value="female">
+                        <span>Female</span>
+                    </label>
+                    <label class="radio-group">
+                        <input contenteditable="false" class="radio-input" type="radio" name="gender" id="neutral" value="neutral">
+                        <span>Non-binary</span>
+                    </label>
+                    <div class="warning-box" id="gender-warning">
+                        
+                    </div>
+                </div>
+                <div class="input-box">
+                    <div class="details">Email</div>
+                    <div class="wrapper">
+                        <input id="email" name="email" type="email" onkeyup="warning()" onClick="c5()" placeholder="Enter your email" required>
+                    </div>
+                    <div class="warning-box" id="email-warning"> </div>
+                </div>
+                <!-- <div class="input-box" style="white-space: nowrap;">
+                    <div class="details">Phone Number</div>
+                    <div class="input-grp">
+                        <div style="width: 40%">
+                            <select class="combo-box" name="area-code" id="area-code">
+                                <option class="select-placeholder" value="" disabled selected hidden>Area Code
+                                </option>
+                                <option value="saab">Vietnam(+84)</option>
+                            </select>
+                        </div>
+                        <div style="width: 54%">
+                            <input idtype="text" placeholder="Type your phone number" required>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="input-box">
+                    <div class="details">Phone Number</div>
+                    <div class="wrapper">
+                        <input type="text" id="phonenumber" name="phone" onkeyup="warning()" onClick="c6()" placeholder="Type your phone number" required>
+                    </div>
+                    <div class="warning-box" id="phonenumber-warning">
+                        
+                    </div>
+                </div>
+                <div class="input-box">
+                    <div class="details">Password</div>
+                    <div class="wrapper">
+                        <input type="password" name="password" id="password" onkeyup="warning()" onClick="c7()" placeholder="Create a password" required>
+                    </div>
+                    <div class="warning-box" id="password-warning">
+                        
+                    </div>
+                </div>
+                <div class="input-box">
+                    <div class="details">Confirm Password</div>
+                    <div class="wrapper">
+                        <input type="password" id="confirm" onkeyup="warning()"" onclick="c8()" placeholder="Type the password again" required>
+                    </div>
+                    <div class="warning-box" id="confirm-warning">
+                        
+                    </div>
+                </div>
+                <div class="input-box">
+                    <label id="ts-pp-label">
+                        <input id="checkbox" class="checkbox-input" type="checkbox">
+                        <span class="details">Creating an account means you’re okay with our
+                            <a href="">Terms of Service and Privacy Policy</a>.
+                        </span>
+                        <div class="warning-box" id="check-warning">
+                            
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div class="button-wrap">
+            <!--  <button  class="register-button" onClick="warning1()">Register</button> -->  
+                <input class="register-button" onClick="warning1()" type="submit" value="Register" />
+            </div>
+        </form>
+    </div>   
+    
+</body>
+
+</html>

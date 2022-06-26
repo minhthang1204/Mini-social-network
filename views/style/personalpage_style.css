@@ -1,0 +1,682 @@
+:root{
+    --d: 25px;
+    --e: 5px;
+}
+
+/* .tool-bar {
+    background-color: #fff;
+    overflow: hidden;
+    position: fixed;
+    z-index: 1;
+}
+
+#tool-bar a {
+    font-size: 24px;
+    text-align: center;
+    padding: 12px 0;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+#left-icon-bar {
+    width: 25%;
+    float: left;
+}
+
+#left-icon-bar a {
+    float: left;
+    width: 59px;
+}
+
+#middle-icon-bar {
+    width: 45%;
+}
+
+#middle-icon-bar a {
+    float: left;
+    width: 15%;
+}
+
+#right-icon-bar {
+    float: right;
+    width: 30%;
+}
+
+#right-icon-bar a {
+    float: right;
+    width: 59px;
+}
+
+#tool-bar a:hover {
+    background-color: #000;
+}
+
+#tool-bar .active {
+    background-color: #00cc00;
+    color: white;
+}
+
+.circle {
+    border-radius: 50%;
+    margin: 2px;
+}
+
+.dropdown {
+    float: right;
+    overflow: hidden;
+    width: 59px;
+}
+
+.dropdown .dropbtn {
+    cursor: pointer;
+    font-size: 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 12px 0;
+    background-color: #00cc00;
+    margin: 0;
+}
+
+.dropdown:hover .dropbtn,
+.dropbtn:focus {
+    background-color: #3e8e41;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    max-width: 300px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: 62px;
+}
+
+.dropdown-content1 {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    max-width: 300px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: 80px;
+}
+
+.dropdown-content a,
+.dropdown-content1 a {
+    float: none !important;
+    color: black;
+    padding: 12px 16px !important;
+    text-decoration: none;
+    display: block;
+    text-align: left !important;
+    width: auto !important;
+    font-size: 12px !important;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.each-drop-content {
+    background-color: #f1f1f1 !important;
+    color: black !important;
+}
+
+.each-drop-content:hover {
+    background-color: #ddd !important;
+} */
+
+
+/*.fa-facebook {
+          background: #3B5998;
+          color: white;
+      }*/
+
+
+/* cover and avatar*/
+
+.top {}
+
+/* .tool-bar a {
+    float: left;
+    font-size: 24px;
+    text-align: center;
+    padding: 12px 0;
+    color: #1ab2ff;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.tool-bar-center a {
+    float: none;
+    position: absolute;
+    cursor: pointer;
+} */
+
+#home-label {
+    left: 40%;
+    width: 8%;
+}
+
+#user-label {
+    padding: 0;
+    font-size: 20px;
+    margin-top: 15px;
+    padding: 0 5px;
+    left: 50%;
+}
+
+/* .tool-bar-right button {
+    float: right;
+}
+
+.tool-bar-right a {
+    float: right;
+}
+
+.tool-bar a:hover {
+    color: #0066ff;
+}
+
+.tool-bar .active {
+    background-color: white;
+    /* border-bottom: 1px solid #0066ff; */
+} */
+
+.circle {
+    border-radius: 50%;
+    margin: 2px;
+}
+
+/* .dropdown {
+    float: right;
+    overflow: hidden;
+    width: 59px;
+}
+
+.dropdown .dropbtn {
+    width: 52px;
+    height: 52px;
+    cursor: pointer;
+    font-size: 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 12px 0;
+    background-color: #00cc00;
+    margin: 5px;
+}
+
+/* .dropdown:hover .dropbtn,
+.dropbtn:focus {
+    background-color: #3e8e41;
+} */
+
+/* .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    max-width: 300px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    top: 62px;
+    right: 62px;
+}
+
+.dropdown-content1 {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    max-width: 300px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    top: 62px;
+    right: 120px;
+}
+
+.dropdown-content2 {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    max-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    top: 62px;
+    right: 0px;
+}
+
+.dropdown-content a {
+    float: none !important;
+    color: black;
+    padding: 12px 16px !important;
+    text-decoration: none;
+    display: block;
+    text-align: left !important;
+    width: auto !important;
+    font-size: 12px !important;
+}
+
+.dropdown-content1 a {
+    float: none !important;
+    color: black;
+    padding: 12px 16px !important;
+    text-decoration: none;
+    display: block;
+    text-align: left !important;
+    width: auto !important;
+    font-size: 12px !important;
+}
+
+.dropdown-content2 a {
+    float: none !important;
+    color: black;
+    padding: 12px 16px !important;
+    text-decoration: none;
+    display: block;
+    text-align: left !important;
+    width: auto !important;
+    font-size: 12px !important;
+} */
+/* 
+.friend-request-form {
+    background-color: white;
+    padding-left: 200px;
+}
+
+.btn-friend-res {
+    border: none;
+    padding: 6px;
+    color: white;
+    background-color: #00e600;
+}
+
+.dropdown-content a:hover,
+.dropdown-content1 a:hover,
+.dropdown-content2 a:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
+}
+
+.each-drop-content {
+    background-color: white !important;
+    color: black !important;
+}
+
+.each-drop-content:hover {
+    background-color: #ECF3FF !important;
+} */
+
+
+/*.fa-facebook {
+          background: #3B5998;
+          color: white;
+      }*/
+
+
+/* cover and avatar*/
+
+.top {
+    /* background-color: red;*/
+    background: linear-gradient(to top, #ffffff 30%, #99ccff 100%);
+    height: fit-content;
+    padding-top: 120px;
+    padding-bottom: 5px;
+    z-index: 1;
+}
+
+img.center {
+    display: block;
+}
+
+.container {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.edit-cover-image {
+    position: absolute;
+    right: 28%;
+    bottom: 10px;
+}
+
+#cover {
+    width: 50%;
+}
+
+#avatar {
+    border: 1px solid white;
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+}
+
+#edit-avatar {
+    padding: 10px;
+    width: fit-content;
+}
+
+.edit-avatar-form {
+    text-align: center;
+    display: none;
+}
+
+.center-position {
+    text-align: center;
+}
+
+.edit-story-form {
+    text-align: center;
+    display: none;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    height: 47px;
+    background-color: #fff;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: #666666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li button {
+    text-align: center;
+    padding: 14px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #00cc00;
+    color: white;
+}
+
+li a:hover {
+    background-color: #d9d9d9;
+}
+
+.tab-bar {
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 1px solid #d9d9d9;
+}
+
+.active {
+    color: #4da6ff;
+}
+
+.main-content {
+    background-color: yellow;
+}
+
+
+/* left-side*/
+
+.left-content {
+    width: 400px;
+}
+
+.introduce {
+    padding: var(--e);
+}
+
+.content-info {
+    float: left;
+    padding: 8px;
+}
+
+.edit-info {
+    width: 100%;
+    background-color: #cccccc;
+    border: none;
+}
+
+.photo {
+    padding: var(--e);
+}
+
+.each-photo {
+    width: 120px;
+    height: 120px;
+}
+
+.right {
+    float: right;
+}
+
+.table-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.friend {
+    padding: var(--e);
+}
+
+.name {
+    width: 100px;
+}
+#info {
+    width: fit-content; 
+    position: sticky;
+}
+#friend-table {
+    border-spacing: 10px;
+}
+
+#main{
+    margin-left: var(--d)
+}
+
+#main .post {
+    margin-bottom: var(--d);
+}
+/* ::-webkit-scrollbar {
+    overflow-anchor: none;
+} */
+
+#main #post-maker{
+    margin-bottom: var(--d);
+}
+
+#photos{
+    display: none; 
+    width: 860px;
+    padding: 10px;
+}
+
+#photos .img-row:not(:last-of-type){
+    margin-bottom: 10px;
+    justify-content: flex-start;
+}
+
+#photos .img{
+    width: 160px;
+    height: 160px;
+    margin-right: 10px;
+    
+}
+.img-wrapper{
+    display: block;
+    border-radius: 8px;
+    background-position: center;
+    height:100%;
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+.img-wrapper:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
+#photos .img-row{
+    justify-content: flex-start;
+}
+
+#photos .img-row .img:last-of-type{
+    margin-right: 0px
+}
+
+#friends{
+    width: fit-content;
+    display: none;
+}
+#friends user-avt{
+    margin-right: 10px;
+}
+#friends .fr-row{
+    justify-content: flex-start;
+}
+#friends .fr-row:not(:last-of-type){
+    margin-bottom: 20px;
+}
+#friends .fr-row > *:not(:last-of-type){
+    margin-right: 20px;
+}
+#friends .fr-row > *{
+    display: flex;
+    justify-content: flex-start;
+    width: 400px;
+}
+
+#main-views{
+    padding: var(--d);
+}
+.infor-container>*:not(:first-of-type) {
+    padding-top: 1.4%;
+    border-top-width: 1px;
+    border-top-color: lightgray;
+    border-top-style: inset;
+}
+
+
+/*profile*/
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+
+/* Modal Content */
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 35%;
+}
+
+
+/* The Close Button */
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.profile {
+    padding: 50px;
+}
+
+.la {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.ta {
+    width: 100%;
+}
+
+#supro {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    float: right;
+}
+
+.display {
+    display: none !important;
+}
+
+#sub-nav {
+    display: flex;
+    justify-content: center;
+}
+
+.home-side {
+    width: 400px;
+}
+
+.home-side:first-of-type {
+    left: 0px;
+    width: 400px;
+}
+
+.home-side .home-side-content {
+    width: fit-content;
+}
+
+#friend-request-icon {
+    border-radius: 50%;
+}
+
+
+@media (max-width: 900px) {
+    #main {
+        display: none;
+    }
+}

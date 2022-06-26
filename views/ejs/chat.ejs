@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="/socket.io/socket.io.js"></script>
+    
+</head>
+
+<body>
+    <h1><%= user.username %></h1>
+    <input type="hidden" id="sendId" value="<%= user._id %>">
+    <h1>Chat with: </h1>
+    <ul>
+        <li>
+            <button onclick="chatTest1()">Test1</button>
+            <input type="hidden" id="test1" value="<%= userArr[0]._id %>">
+        </li>
+        <li>
+            <button onclick="chatTest2()">Test2</button>
+            <input type="hidden" id="test2" value="<%= userArr[1]._id %>">
+        </li>
+        <li>
+            <button onclick="chatTest3()">Test3</button>
+            <input type="hidden" id="test3" value="<%= userArr[2]._id %>">
+        </li>
+    </ul>
+    <input type="text" id="message-input" >
+    <button onclick="sendMessage()">Send</button>
+    <script src="../script.js"></script>
+</body>
+
+</html>

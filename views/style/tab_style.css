@@ -1,0 +1,207 @@
+
+.tool-bar {
+    
+    background-color: #fff;
+        
+    /* overflow: hidden; */
+        
+    position: fixed;
+        
+    z-index: 1;
+   
+        }
+
+      .tool-bar a{
+          float: left;
+
+          font-size: 24px;
+          text-align: center;
+          padding: 12px 0;
+          
+          color: #1ab2ff;
+          background-color:white ;
+          transition: all 0.3s ease;
+          
+          
+          
+      }
+      .tool-bar-center a{
+          float: none;
+          position: absolute;
+           
+
+            
+            cursor: pointer;
+
+            
+
+          
+      }
+      #home-label{
+        left: 40%;
+          width: 8%;
+      }
+      #user-label{
+        padding: 0;
+        font-size: 20px;
+        margin-top:15px;
+        
+        
+        padding: 0 5px;
+        left: 50%;
+        
+
+    }
+      
+      
+      .tool-bar-right button{
+          float: right;
+      
+          
+      }
+      .tool-bar-right a{
+        float: right;
+    
+        
+    }
+      
+    
+      
+      .tool-bar a:hover {
+          color:#0066ff;
+          
+          
+      }
+      
+      .tool-bar .active {
+          background-color: white;
+          
+          border-bottom: 1px solid #0066ff;
+      }
+      
+      .circle{
+          border-radius: 50%;
+          margin: 2px;
+      }
+      
+      .dropdown {
+        float: right;
+        overflow: hidden;
+        width: 59px;
+        
+      }
+      
+      .dropdown .dropbtn {
+        width: 52px;
+        height: 52px;
+        cursor: pointer;
+        font-size: 24px;
+        text-align: center;
+        transition: all 0.3s ease;
+        border: none;
+        outline: none;
+        color: white;
+        /* padding: 12px 0; */
+        background-color: #00cc00;
+        margin: 5px;
+      }
+      
+      
+      .dropdown:hover .dropbtn, .dropbtn:focus {
+        background-color: #3e8e41;
+      }
+      
+      
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        max-width: 300px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        top: 62px;
+        right: 62px;
+      }
+      .dropdown-content1 {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        max-width: 300px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        top: 62px;
+        right: 120px;
+      }
+      .dropdown-content2 {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        max-width: 150px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        top: 62px;
+        right: 0px;
+      }
+      
+      .dropdown-content a{
+       float: none !important;
+       color: black;
+       padding: 12px 16px !important;
+       text-decoration: none;
+       display: block;
+       text-align: left !important;
+       width: auto !important;
+       font-size: 12px !important;
+      }
+      .dropdown-content1 a {
+        float: none !important;
+        color: black;
+        padding: 12px 16px !important;
+        text-decoration: none;
+        display: block;
+        text-align: left !important;
+        width: auto !important;
+        font-size: 12px !important;
+      }
+      .dropdown-content2 a {
+        float: none !important;
+        color: black;
+        padding: 12px 16px !important;
+        text-decoration: none;
+        display: block;
+        text-align: left !important;
+        width: auto !important;
+        font-size: 12px !important;
+      }
+      
+      .friend-request-form{
+          background-color: white;
+          padding-left: 200px;
+      }
+      .btn-friend-res {
+        border: none;
+        padding: 6px;
+        color: white;
+        background-color: #00e600;
+    }
+      .dropdown-content a:hover,.dropdown-content1 a:hover,.dropdown-content2 a:hover {
+        background-color: #ddd;
+      }
+      
+      .show {
+        display: block;
+      }
+      .each-drop-content{
+          background-color: white !important;
+          color: black !important;
+      }
+      .each-drop-content:hover{
+            background-color: #ECF3FF !important;
+      }
+      /*.fa-facebook {
+          background: #3B5998;
+          color: white;
+      }*/
+      
+     
+      

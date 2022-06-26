@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>
+    Mini Social Network
+</title>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../style/homepage_style.css">
+    <script src="../script/homepage_script.js"></script>
+    <link rel="stylesheet" href="../style/personalpage_style.css">
+    <script>
+        function navOn(nav){
+            console.log(nav);
+            var list = document.querySelectorAll('.navi:not(#' + nav + ')')
+            for(var i = 0; i < list.length; i++){
+                list[i].classList.remove('active')
+            }
+            document.getElementById(nav).classList.add('active')
+            var main = document.getElementById('main').style
+            var info = document.getElementById('info').style
+            var photos = document.getElementById('photos').style
+            var friends = document.getElementById('friends').style
+             switch(nav){
+                case 'post-nav':{
+                    main.display = 'block'
+                    info.display = 'block'
+                    photos.display = 'none'
+                    friends.display = 'none'
+                    break;
+                }
+                case 'profile-nav':{
+                    main.display = 'none'
+                    info.display = 'block'
+                    photos.display = 'none'
+                    friends.display = 'none'
+                    break;
+                }
+                case 'photos-nav':{
+                    main.display = 'none'
+                    info.display = 'none'
+                    photos.display = 'block'
+                    friends.display = 'none'
+                    break;
+                }
+                case 'friends-nav':{
+                    main.display = 'none'
+                    info.display = 'none'
+                    photos.display = 'none'
+                    friends.display = 'block'
+                    break;
+                }
+            }
+        }
+    </script>
+</head>
+
+<body onclick="dropDownOff()">
+    <div id="hidden-info">
+        <input id="username" value="<%=user.username%>" hidden>
+        <input id="userid" value="<%=user._id%>" hidden>
+        <input id="useravt" value="<%=user.avatarurl%>" hidden>
+        <input id="pagename" value="personalpage" hidden>
+        <input id="exception" value="undefined-id" hidden>
+    </div>
+    <div id="tool-bar" class="shadowable">
+        <div>
+            <div class="tool-bar-option flexable" style="width:25%">
+                <div id="logo" style="width:60px; margin-left: 20px">
+                    <button class="color-change" onclick="borderToggle()"></button>
+                </div>
+                <div>
+                    <live-search></live-search>
+                </div>
+            </div>       
+            <div class="tool-bar-option flexable" style="width:50%">
+                <a id="homepage-nav" href="../newsfeed" class="color-change flexable nav-button" onmousemove="navButtonOn(this.id)" onmouseout="navButtonOff(this.id)">
+                    <div class="flexable"> 
+                        <svg aria-hidden="true" focusable="false" data-prefix="fa" data-icon="home" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path></svg>
+                    </div>
+                </a>
+                <a id="personalpage-nav" href="../users/<%=user._id%>" class="color-change flexable nav-button" onmousemove="navButtonOn(this.id)" onmouseout="navButtonOff(this.id)">
+                    <div style="height: 42px">
+                        <svg style="color: #1877f2" class="svg-inline--fa fa-user-circle fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"></path></svg>
+                    </div>
+                </a>
+            </div>
+            <div class="tool-bar-option flexable" style="width:25%">
+                
+                <user-card id="self-card" username="<%=user.username%>" avt-url="<%=user.avatarurl%>" href="/users/<%=user._id%>" style="width: 100%"></user-card>
+                <div class="dropdown">
+                    <button id="request" class="circle dropbtn flexable" onclick="openDropdown(this.id)" onmousemove="addException(this.id)" onmouseout="removeException()">
+                        <svg viewBox="0 0 28 28" class="a8c37x1j ms05siws hwsy1cff b7h9ocf4 aaxa7vy3" height="28" width="28"><path d="M21.877 19 21.364 19C21.139 19 20.971 18.802 20.996 18.577 21.01 18.461 21.017 18.342 21.017 18.221L21.017 17.724C21.017 16.568 20.667 15.491 20.066 14.591 19.899 14.338 20.067 14 20.369 14L20.521 14C22.274 14 23.5 15.492 23.5 17.327 23.5 18.25 22.772 19 21.877 19ZM17.75 10.75C17.75 9.384 18.535 8.5 19.75 8.5 20.965 8.5 21.75 9.384 21.75 10.75 21.75 11.991 20.853 13 19.75 13 18.647 13 17.75 11.991 17.75 10.75ZM19.5 18.221C19.5 19.202 18.682 20 17.678 20L10.323 20C9.317 20 8.5 19.202 8.5 18.221L8.5 17.724C8.5 15.395 10.442 13.5 12.828 13.5L15.173 13.5C17.559 13.5 19.5 15.395 19.5 17.724L19.5 18.221ZM6.25 10.75C6.25 9.384 7.035 8.5 8.25 8.5 9.465 8.5 10.25 9.384 10.25 10.75 10.25 11.991 9.353 13 8.25 13 7.147 13 6.25 11.991 6.25 10.75ZM7.934 14.591C7.334 15.491 6.983 16.568 6.983 17.724L6.983 18.221C6.983 18.342 6.991 18.461 7.004 18.577 7.03 18.802 6.861 19 6.637 19L6.123 19C5.228 19 4.5 18.25 4.5 17.327 4.5 15.492 5.727 14 7.479 14L7.631 14C7.933 14 8.102 14.338 7.934 14.591ZM14 6C15.697 6 16.75 7.15 16.75 9 16.75 10.655 15.517 12 14 12 12.484 12 11.25 10.655 11.25 9 11.25 7.15 12.304 6 14 6ZM14 1C6.832 1 1 6.832 1 14 1 21.169 6.832 27 14 27 21.169 27 27 21.169 27 14 27 6.832 21.169 1 14 1Z"></path></svg>
+                    </button>     
+                </div>                
+                <div class="dropdown">
+                    <button id="notification" class="circle dropbtn flexable" onclick="openDropdown(this.id)" onmousemove="addException(this.id)" onmouseout="removeException()">
+                        <svg class="svg-inline--fa fa-bell fa-w-14" aria-hidden="true" focusable="false" data-prefix="fa" data-icon="bell" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"></path></svg>
+                    </button>     
+                </div>
+                <div class="dropdown">
+                    <button id="account" class="circle dropbtn flexable" onclick="openDropdown(this.id)" onmousemove="addException(this.id)" onmouseout="removeException()">
+                        <svg class="svg-inline--fa fa-caret-down fa-w-10" aria-hidden="true" focusable="false" data-prefix="fa" data-icon="caret-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <label id="search-hint" class="visible-box">
+
+    </label>
+    <div id="request-dropdown" class="visible-box dropdown-pane" style="display: none;">
+        <%if (friendRequest.length == 0) { %>
+            <a class="each-drop-content" href="#">No friend request yet.</a>
+        <%}%>
+        <% for (var i = 0; i < friendRequest.length; i++){ %>
+        <div id="request-card-<%=i%>" class="request-card">     
+           <a href="../users/<%=friendRequest[i].receiver._id%>" class="color-change flexable" style="width: 100%">
+                <div style="width: fit-content;">
+                    <user-avt avt-url="<%=friendRequest[i].receiver.avatarurl%>"> 
+                </div>
+                <div>
+                    <b><%=friendRequest[i].receiver.username%></b> has sended you a friend request.
+                </div>
+            </a>
+            <div class="flexable" style="width: 100%">
+                <div class="color-change flexable" onclick="console.log('accept '); this.children[0].children[0].click()">
+                    Accept
+                    <form class="friend-request-form" method="POST" action="../accept-friend?id=<%=friendRequest[i].receiver._id%>&status=2">
+                        <input class="btn-friend-res" type="submit" name="submit" value="Accept" hidden>
+                    </form>
+                </div>
+                <div class="color-change flexable" id="request" onclick="requestHidden('request-card-<%=i%>')" onmousemove="addException(this.id)" onmouseout="removeException()" style="font-size: medium;">
+                    Later
+                </div>
+            </div>              
+        </div>
+        <%}%>
+    </div>
+    <div id="notification-dropdown" class="visible-box dropdown-pane" style="display: none;">
+        <%var count = 0 %>
+        <%for (var i= 0; i < notiArr.length; i++){ %>
+            <% var j = notiArr[i].users.length  %>
+            <% if (notiArr[i].action =="comment" && notiArr[i].users.length != 0) { %>
+                <a class="color-change flexable" href="../posts/<%=notiArr[i].post%>">
+                <%=((j == 1) ? 'A person' : j + ' people')%> commented on a post you're following.</a>
+                <%count++ %>
+            <%} else if (notiArr[i].action =="like" && notiArr[i].users.length != 0) {%>
+                <a class="color-change flexable" href="../posts/<%=notiArr[i].post%>">
+                <%=((j == 1) ? 'A person' : j + ' people')%> liked on your post.</a>
+                <%count++ %>
+            <%}%>
+                <% if(count >= 10) break%>
+            <%}%>
+                <%if(count == 0){%>
+                <a class="each-drop-content" href="#">No notification yet.</a>
+                <%}%>
+    </div>
+    <div id="account-dropdown" class="visible-box dropdown-pane" style="display: none;">
+        <user-card href="" avt-url="/image/change-password.png" username="Change Password"></user-card>
+        <user-card href="../login" avt-url="/image/logout.png" username="Log Out"></user-card>        
+    </div>
+    <label id="icon-pane">
+        <div id="inbox-opener" class="clickable shadowable" onclick="inboxOpen()">
+            <i
+                style="background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/jJF3ugHVLNd.png); background-position: 0 -276px; background-size: 34px 631px; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;">
+            </i>
+        </div>
+    </label>
+    <div id="inbox-pane" class="flexable">
+        <div class="inbox-card-wrapper"></div>
+        <div class="inbox-card-wrapper"></div>
+        <div class="inbox-card-wrapper"></div>
+    </div>
+
+    <div class="top">
+        <div class="container" style="display: flex; align-items: flex-end;justify-content: center;">
+            <!-- <img class="center" id="cover" src="../img1.jpg" alt="hello"   >-->
+            <% if (thisuser.username == user.username) {%>
+                <div id="avt-balance" style="width: 40px"></div>
+            <%}%>
+            <!-- <button class="edit-cover-image" type="button"><i class="fas fa-camera"></i> Chỉnh sửa ảnh bìa</button>-->
+            <%if (thisuser.avatarurl !="") {%>
+                <img class="center" id="avatar" src="<%=thisuser.avatarurl%>" alt="hi">
+                <%} else { %>
+                    <img class="center" id="avatar" src="../image/avt.jpg" alt="hi">
+                    <%}%>
+                        <% if (thisuser.username == user.username) {%>
+                            <button class="clickable" type="button" onclick="avatarFunction()" id="edit-avatar" style="border-radius: 50%;">
+                                <i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/y_/r/RgYUHJb54YS.png&quot;); background-position: 0px -92px; background-size: 26px 440px; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>
+                            </button>
+                            <%}%>
+                                <script>
+                                    function avatarFunction() {
+                                        document.getElementById('myfile').click();
+                                        document.getElementById("edit-avatar-form-id").style.display ="block";
+                                    }
+                                </script>
+        </div>
+        <br>
+        <div class="edit-avatar-form" id="edit-avatar-form-id">
+            <form method="POST" action="../users/uploadAvatar" enctype="multipart/form-data">
+                <label style="display: none;" for="myfile">Change avatar:</label>
+                <input hidden type="file" id="myfile" name="avatar" style="width: 200px;">
+                <input type="submit" class="color-change" value="Save Avatar" style="padding: 5px 10px">
+            </form>
+        </div>
+        <p class="center-position" style=" font-size: 30px;margin: 5px;">
+            <%=thisuser.username%>
+        </p>
+        <%if (thisuser.bio !="") {%>
+            <p class="center-position">
+                <%=thisuser.bio%>
+            </p>
+            <%}%>
+                <% if (thisuser.username == user.username){ %>
+                    <a onclick="storyFunction()" href="#" style="text-decoration: none;">
+                        <p class="center-position" style=" color: #4da6ff;margin: 10px;">Bio</p>
+                    </a>
+                    <%}%>
+                        <script>
+                            function storyFunction() {
+                                document.getElementById("edit-story-form-id").style.display ="block";
+                            }
+                        </script>
+
+                        <div class="edit-story-form" id="edit-story-form-id">
+                            <form method="POST" action="../editbio">
+                                <input type="text" placeholder="Description" name="bio" value="<%=thisuser.bio%>">
+                                <br>
+                                <input type="submit" name="submit" value="Save">
+                            </form>
+                        </div>
+                        <span class="tab-bar">
+                <ul id="sub-nav">
+                    <li onclick="navOn('post-nav')"><a class="navi active" id="post-nav">Post</a></li>
+                    <li onclick="navOn('profile-nav')"><a class="navi" id="profile-nav">Profile</a></li>
+                    <li onclick="navOn('photos-nav')"><a class="navi" id="photos-nav">Photos</a></li>
+                    <li onclick="navOn('friends-nav')"><a class="navi" id="friends-nav" >Friends</a></li>
+                    <%if (thisuser.username != user.username){ %>
+                    <% if (status == 0){ %>
+                    <li style="float: right;">
+                        <form  class="addfriend" method="POST" action="../send-request?id=<%=thisuser._id%>">
+                            <button id="friend-request" type="submit">Add friend</button>
+                        </form>
+                    </li>
+                    <%} else if (status == 2) {%>
+                        <li style="float: right;">
+                            <form  class="addfriend" method="POST" action="../accept-friend?id=<%=thisuser._id%>&status=2">
+                                <button id="friend-request" type="submit">Accept friend</button>
+                            </form>
+                        </li>
+                    <%} else if(status == 1) {%>
+                        <li style="float: right;">
+                            <form  class="addfriend" method="POST" action="../accept-friend?id=<%=thisuser._id%>&status=1">
+                                <button id="friend-request" type="submit">Cancel Request</button>
+                            </form>
+                        </li>
+                    <%} else if(status == 3) {%>
+                         <li style="float: right;">
+                            <form  class="addfriend" method="POST" action="../accept-friend?id=<%=thisuser._id%>&status=3">
+                                <button id="friend-request" type="submit" >Unfriend</button>
+                            </form>
+                        </li>
+                    <%}%>
+                    <%}%>
+                </ul>
+            </span>
+    </div>
+    <div id="main-views" class="flexable" style="justify-content: center; align-items: start;">
+        <div id="info" class="visible-box" >
+            <div class="infor-container">
+                <div class="introduce left-content">
+                    <p style="font-size: 20px;margin: 0;"><b>Introduce</b></p>
+
+                    <table style="padding-top:10px">
+                        <%if (thisuser.major !="") {%>
+                            <tr>
+                                <td><img class="content-info" src="https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/id4jdGYPaIP.png"></td>
+                                <td>
+                                    <p style="font-size: 17px;">Major:
+                                        <%=thisuser.major%>
+                                    </p>
+                                </td>
+
+
+                            </tr>
+                            <%}%>
+                                <%if (thisuser.role !="") {%>
+                                    <tr>
+                                        <td><img class="content-info" src="https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/id4jdGYPaIP.png"></td>
+                                        <td>
+                                            <p style="font-size: 17px;">Role:
+                                                <%=thisuser.role%>
+                                            </p>
+                                        </td>
+
+
+                                    </tr>
+                                    <%}%>
+                                        <%if (thisuser.gender !="") {%>
+                                            <tr>
+                                                <td><img class="content-info" src="https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/id4jdGYPaIP.png"></td>
+                                                <td>
+                                                    <p style="font-size: 17px;">Gender:
+                                                        <%=thisuser.gender%>
+                                                    </p>
+                                                </td>
+
+
+                                            </tr>
+                                            <%}%>
+                                                <%if (thisuser.email !="") {%>
+                                                    <tr>
+                                                        <td><img class="content-info" src="https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/id4jdGYPaIP.png"></td>
+                                                        <td>
+                                                            <p style="font-size: 17px;">Email:
+                                                                <%=thisuser.email%>
+                                                            </p>
+                                                        </td>
+
+
+                                                    </tr>
+                                                    <%}%>
+                                                        <%if (thisuser.dob !="") {%>
+                                                            <tr>
+                                                                <td><img class="content-info" src="https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/id4jdGYPaIP.png"></td>
+                                                                <td>
+                                                                    <p style="font-size: 17px;">Date of Birth:
+                                                                        <%=thisuser.dob%>
+                                                                    </p>
+                                                                </td>
+
+
+                                                            </tr>
+                                                            <%}%>
+                                                                <%if (thisuser.hometown !="") {%>
+                                                                    <tr>
+                                                                        <td><img class="content-info" src="https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/id4jdGYPaIP.png"></td>
+                                                                        <td>
+                                                                            <p style="font-size: 17px;">Hometown:
+                                                                                <%=thisuser.hometown%>
+                                                                            </p>
+                                                                        </td>
+
+
+                                                                    </tr>
+                                                                    <%}%>
+
+                    </table>
+                    <% if (thisuser.username == user.username) {%>
+                        <table style="width:100%">
+                            <tr>
+                                <td><button id="myBtn" class="edit-info color-change" style="font-size: 16px;margin: 5px;padding: 5px;" type="button">Edit details </button></td>
+                            </tr>
+                        </table>
+                        <%}%>
+                </div>
+                <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content" style="margin-top: 100px">
+                        <span class="close">&times;</span>
+                        <h1 style="text-align: center;"> Profile</h1>
+                        <form class="profile" method="POST" action="../edit">
+                            <table class="ta">
+
+                                <tr>
+                                    <td> <label class="la" for="birthday">DOB:</label></td>
+                                    <td> <input type="date" id="birthday" name="dob" value="<%=user.dob%>"> </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <p class="la">Gender:</p>
+                            <input type="radio" id="male" name="gender" value="male">
+                            <label for="male">Male</label>
+                            <input type="radio" id="female" name="gender" value="female">
+                            <label for="female">Female</label>
+                            <input type="radio" id="other" name="gender" value="other">
+                            <label for="other">Other</label>
+                            <br> <br>
+                            <p class="la">Role:</p>
+                            <input type="radio" id="student" name="role" value="student">
+                            <label for="student">Student</label>
+                            <input type="radio" id="teacher" name="role" value="teacher">
+                            <label for="teacher">Teacher</label><br><br>
+                            <table class="ta">
+                                <tr>
+                                    <td> <label class="la" for="email">Email:</label></td>
+                                    <td> <input type="text" id="email" name="email" value="<%=user.email%>"></td>
+                                </tr>
+
+                                <tr>
+                                    <td> <label class="la" for="major">Major:</label></td>
+                                    <td> <input type="text" id="major" name="major" value="<%=user.major%>"></td>
+                                </tr>
+                                <tr>
+                                    <td> <label class="la" for="hometown">Hometown:</label></td>
+                                    <td> <input type="text" id="hometown" name="hometown" value="<%=user.hometown%>"></td>
+                                </tr>
+                            </table>
+                            <br><br>
+                            <input id="supro" type="submit" name="submit" value="submit">
+                        </form>
+                    </div>
+                </div>
+
+                <div class="photo left-content">
+                    <p><label style="font-size: 20px;"><b>Photos</b></label>
+                        <a class="right clickable"><label style="font-size: 18px ;"></label></a></p>
+                    <table class="table-center">
+                        <%if(postArr.length!=0){ %>
+                            <% var i = 0 %>
+                                <%for (var post of postArr) { %>
+
+                                    <%if (post.imgurl !="" ){%>
+                                        <%if (i%3 == 0 ) { %>
+                                            <tr>
+                                                <%}%>
+                                                    <td>
+                                                        <div class="each-photo">
+                                                            <i class="img-wrapper" style="background-image: url('<%=post.imgurl%>'); border-radius: 0px;">
+                                                                
+                                                            </i>
+                                                        </div>
+                                                    </td>
+
+                                                    <%if (i%3 == 2 ) { %>
+                                            </tr>
+                                            <%}%>
+                                                <% i++ %>
+                                                    <% } %>
+
+                                                        <% } %>
+
+                                                            <% } %>
+                    </table>
+                </div>
+                <div id+="friend-list" class="friend left-content">
+                    <p><label style="font-size: 20px;"><b>Friends</b></label>
+                        <a href="#" class="right"><label style="font-size: 18px ;"></label></a></p>
+                    <p>
+                        <%=friendArr.length%>
+                    </p>
+                    <table class="table-center" id="friend-table">
+                        <%if(friendArr.length!=0){ %>
+                            <% var name = [] %>
+                                <% var image = [] %>
+                                    <% var id = [] %>
+                                        <% var i = 0 %>
+                                            <%for (var friend of friendArr){ %>
+                                                <%i++%>
+                                                    <% name.push(friend.username) %>
+                                                        <% if (friend.avatarurl !="") { %>
+                                                            <% image.push(friend.avatarurl)%>
+                                                                <%}else {%>
+                                                                    <% image.push("../image/avt.jpg")%>
+                                                                        <%}%>
+                                                                            <% id.push(friend._id)%>
+                                                                                <% if(i % 3 ==0){%>
+
+                                                                                    <tr>
+                                                                                        <td><a href="../users/<%=id[0]%>"><img class="each-photo"src="<%=image[0]%>"></a></td>
+                                                                                        <td><a href="../users/<%=id[1]%>"><img class="each-photo"src="<%=image[1]%>"></a></td>
+                                                                                        <td><a href="../users/<%=id[2]%>"><img class="each-photo"src="<%=image[2]%>"></a></td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td><label class="name"> <%=name[0]%> </label></td>
+                                                                                        <td><label class="name"><%=name[1]%> </label></td>
+                                                                                        <td><label class="name"><%=name[2]%> </label></td>
+                                                                                    </tr>
+                                                                                    <%name = []%>
+                                                                                        <%image = []%>
+                                                                                            <%id = []%>
+
+                                                                                                <%}%>
+                                                                                                    <%}%>
+                                                                                                        <% if(name.length > 0) {%>
+                                                                                                            <tr>
+                                                                                                                <% for(var j = 0; j < name.length;j++){%>
+                                                                                                                    <td><a href="../users/<%=id[j]%>"><img class="each-photo"src="<%=image[j]%>"></a></td>
+                                                                                                                    <%}%>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <% for(var j = 0; j < name.length;j++){%>
+                                                                                                                    <td><label class="name"> <%=name[j]%> </label></td>
+                                                                                                                    <%}%>
+                                                                                                            </tr>
+                                                                                                            <%}%>
+
+
+
+                                                                                                                <%}%>
+                    </table>
+                </div>
+
+            </div >
+            
+        </div>
+        <div id="main" style=" width: 650px">
+            <% if (thisuser.username == user.username) {%>
+            <div id="post-maker" class="visible-box">
+                <form id="post-form" method="POST" action="/posts/create" enctype="multipart/form-data">
+                    <div class="flexable">
+                        <user-avt self></user-avt>
+                        <div class="text-wrapper editable" style="width:92%">
+                            <input id="content" type="text" name="content" placeholder="What are you thinking?" style="font-size: medium; display: none;"" value="Nothing">
+                            <span id="post-text-holder" class="text-holder" contenteditable="" placeholder="What are you thinking?" style="font-size: medium;"></span>
+                        </div>
+                    </div>
+                    <div class="flexable" style="margin-top: 1%; font-size: small;">
+                        <div class="color-change wrapper" style="width:40%;" onclick="addImage()">
+                            <div style="width: fit-content;">
+                                <i data-visualcompletion="css-img" style="background-image:url('https://static.xx.fbcdn.net/rsrc.php/v3/y7/r/BBBT0t32QI0.png');background-position:0 -396px;background-size:50px 582px;width:24px;height:24px;background-repeat:no-repeat;display:inline-block"></i>
+                            </div>
+                            <div style="width: fit-content; margin-left: 5px;">
+                                Add/Change Image
+                            </div>
+                        </div>
+                        <div style="width:40%">
+                        </div>
+                        <button type="submit" class="color-change wrapper" style="width:40%" onclick="newPost()">
+                            <div style="width: fit-content;">
+                                <i data-visualcompletion="css-img"
+                                    style="background-image:url('https://static.xx.fbcdn.net/rsrc.php/v3/y7/r/BBBT0t32QI0.png');background-position:0 -396px;background-size:50px 582px;width:24px;height:24px;background-repeat:no-repeat;display:inline-block"></i>
+                            </div>
+                            <div style="width: fit-content; margin-left: 5px;">
+                                Post Now
+                            </div>
+                        </button>
+                    </div>
+
+                    <div id="post-img-holder">
+                        <input name="imagePost" id="file" type="file" style="display: none;">
+                        <img id="post-img" src="" style="width: 100%; display: none;">
+                    </div>
+                </form>
+            </div>
+            <%}%>
+            <%if(postArr.length!=0){ %>
+                <% var i = 0 %>
+                    <%for (var post of postArr) { %>
+                        <user-post username="<%=post.user.username%>" post-id="<%=post._id%>" avt-url="<%=post.user.avatarurl%>" text="<%=post.content%>" img-url="<%=post.imgurl%>" posted-time="<%=post.createdAt%>" liked=<%=likeArr[i]%>
+                            like-count="
+                            <%=post.likes.length%>" cmt-count="
+                                <%=post.comments.length%>">
+                                    <%if (post.comments.length!=0) {%>
+                                        <%for(var comment of post.comments){ %>
+                                            <user-comment avt-url="<%=comment.userid.avatarurl%>" username="<%=comment.userid.username%>" user-id="<%=comment.userid._id%>" posted-time="<%=comment.createdAt%>">
+                                                <%=comment.content%>
+                                            </user-comment>
+                                            <%}%>
+                                                <%}%>
+
+                        </user-post>
+
+                        <%i++%>
+                            <% } %>
+                                <% } %>
+        </div>
+        <div id="friends" class="visible-box">
+            <div class="flexable" style="margin-bottom: 25px;">
+                <div>
+                    <% if(thisuser.username == user.username){%>
+                    Your <%}else{%>
+                    <%=thisuser.username%>'s
+                    <%}%>
+                    Friends
+                </div>
+                <div>
+                    Search
+                </div>
+            </div>
+            <div class="list-wrapper">
+                    <% var i = 0 %>
+                    <%for (var friend of friendArr) { %>
+                        <%if (i%2 == 0 ) { %>
+                            <div class="flexable fr-row">
+                        <%}%>
+                                <a class="color-change" href="/users/<%=friend._id%>">
+                                    <user-avt avt-url="<%=friend.avatarurl%>" size="100px"></user-avt>
+                                    <div class="flexable">
+                                        <div> 
+                                            <div style="font-size: large; font-weight: 600;">
+                                                <%if(friend.username == user.username) {%>
+                                                    you
+                                                <%} else{%>
+                                                    <%=friend.username%> 
+                                                <%}%>           
+                                            </div>
+                                            <div style="font-size: small; color: gray"><%=friend.role%></div>
+                                            <div><%=friend.major%></div>
+                                        </div>
+                                    </div>
+                                </a>
+                        <%if (i%2 == 1 ) { %>
+                            </div>
+                        <%}%>
+                        <% i++ %>
+                    <%}%>
+            </div>        
+        </div>   
+    </div>
+    <div id="photos" class="visible-box">
+            <div style="margin-bottom: 10px;">
+                <% if(thisuser.username == user.username){%>
+                Your <%}else{%>
+                <%=thisuser.username%>'s
+                <%}%>
+                Photos
+            </div>
+            <%if(postArr.length!=0){ %>
+                <% var i = 0 %>
+                    <%for (var post of postArr) { %>
+                        <%if (post.imgurl !="" ){%>
+                            <%if (i%5 == 0 ) { %>
+                                <div class="img-row flexable">
+                                    <%}%>
+                                    <div class="img">
+                                        <i class="img-wrapper"                     
+                                            style="background-image: url('<%=post.imgurl%>');">
+                                        </i>
+                                    </div>
+                                    <%if (i%5 == 4 ) { %>
+                                </div>
+            <%}%><% i++ %><%}%><%}%><%}%>
+    </div>   
+</body>
+<script src="../script/CustomElements.js"></script>
+<!-- <script src="script/chat.js"></script> -->
+<script src="../script/logout.js"></script>
+<script src="/script/personalpage_script.js"></script>
+<!--HuongCTT-->
+
+<!-- debug link -->
+<!-- <script src="/views/script/CustomElements.js"></script> -->
+<script>
+    var all = document.querySelectorAll('.text-holder[contenteditable]');
+    for (var i = 0, max = all.length; i < max; i++) {
+        all[i].innerHTML = '';
+    }
+</script>
+<script>
+    try{
+        document.querySelector('.post-text-holder[contenteditable]').innerHTML = ''
+    } catch{
+
+    }
+    var all = document.querySelectorAll('.text-holder[contenteditable]:not(.post-text-holder)');
+    for (var i = 0, max = all.length; i < max; i++) {
+        all[i].innerHTML = '';
+        all[i].addEventListener('keypress', function(e) {
+           
+            if (e.key === 'Enter') {
+               
+                e.preventDefault();
+                newComment('<%=user.username%>', '<%=user.avatarurl%>', this.getAttribute('id'), this.innerHTML);
+                this.innerHTML = '';
+            }
+        })
+    }
+</script>
+<script>
+    try{
+        var input = document.getElementById('file');
+    var img = document.getElementById('post-img');
+    input.addEventListener('change', function() {
+        img.parentElement.style.marginTop = '1%';
+        img.style.display = 'initial';
+        if (this.files && this.files[0]) {
+            img.src = URL.createObjectURL(this.files[0]);
+        }
+    });
+    }catch{
+
+    }
+</script>
+
+<script>
+    var info = document.getElementById('info')
+    var state = info.style.display;
+    info.style.display = 'block'
+    console.log(window.innerHeight)
+    info.style.top = window.innerHeight - 20 - info.clientHeight + 'px'
+    info.style.display = state
+</script>
+<script>
+    /* When the user clicks on the button, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                toggle between hiding and showing the dropdown content */
+    function myFunction2() {
+        document.getElementById("myDropdown2").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(e) {
+        if (!e.target.matches('.dropbtn')) {
+            var myDropdown = document.getElementById("myDropdown2");
+            if (myDropdown.classList.contains('show')) {
+                myDropdown.classList.remove('show');
+            }
+        }
+    }
+</script>
+<script>
+    /* When the user clicks on the button, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                toggle between hiding and showing the dropdown content */
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(e) {
+        if (!e.target.matches('.dropbtn')) {
+            var myDropdown = document.getElementById("myDropdown");
+            if (myDropdown.classList.contains('show')) {
+                myDropdown.classList.remove('show');
+            }
+        }
+    }
+</script>
+<script>
+    /* When the user clicks on the button, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            toggle between hiding and showing the dropdown content */
+    function myFunction1() {
+        document.getElementById("myDropdown1").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(e) {
+        if (!e.target.matches('.dropbtn')) {
+            var myDropdown = document.getElementById("myDropdown1");
+            if (myDropdown.classList.contains('show')) {
+                myDropdown.classList.remove('show');
+            }
+        }
+    }
+</script>
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal
+    btn.onclick = function(e) {
+        // e.preventDefault();
+        console.log("co vao day");
+        modal.style.display ="block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function(e) {
+        e.preventDefault();
+        modal.style.display ="none";
+
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        console.log("abc");
+        //    event.preventDefault();
+        if (event.target == modal) {
+
+            modal.style.display ="none";
+        }
+    }
+</script>
+
+</html>
