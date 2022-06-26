@@ -232,4 +232,33 @@ router.get('/users/:id',auth,  async (req, res) => {
     }
 })
 
+router.post('/edit', auth, async (req, res) => {
+    // console.log(req.body)
+    const updates = Object.keys(req.body)
+    // console.log(updates)
+
+    try {
+        updates.forEach((update) => req.user[update] = req.body[update])
+        await req.user.save()
+        res.redirect('back')
+    } catch (e) {
+        res.status(400).send(e)
+        console.log(e)
+    }
+})
+router.post('/editbio', auth, async (req, res) => {
+    console.log(req.body)
+    // const updates = Object.keys(req.body)
+    // console.log(updates)
+
+    try {
+        req.user.bio = req.body.bio
+        await req.user.save()
+        res.redirect('back')
+    } catch (e) {
+        res.status(400).send(e)
+        console.log(e)
+    }
+})
+
 module.exports = router
