@@ -6,7 +6,7 @@ Project được code theo mô hình MVC :
 -	model: Quản lí xử lí các dữ liệu.
 -	controller: Điều khiển sự tương tác của hai thành phần Model và View.
 -	view: Nới hiển thị dữ liệu cho người dùng.
-và sử dụng framework ExpressJs, MongoDB để sự dụng truy vấn CSDL
+Và sử dụng framework ExpressJs, MongoDB để sự dụng truy vấn CSDL
 ## 2.	Hướng dẫn cài đặt
 ### 2.1.	Clone project:
 - git clone .....
